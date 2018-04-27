@@ -1,21 +1,37 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  Title,
+  Right,
+  Content,
+  Textarea,
+  Form
+} from "native-base";
+import { AppFontLoader } from "./utils/AppFontLoader";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <AppFontLoader>
+        <Container>
+          <Header>
+            <Left />
+            <Body>
+              <Title>Textarea</Title>
+            </Body>
+            <Right />
+          </Header>
+          <Content padder>
+            <Form>
+              <Textarea rowSpan={5} bordered placeholder="Textarea" />
+            </Form>
+          </Content>
+        </Container>
+      </AppFontLoader>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
