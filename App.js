@@ -1,5 +1,4 @@
 import React from 'react';
-import {
   Container,
   Header,
   Left,
@@ -11,9 +10,6 @@ import {
   Form,
 } from 'native-base';
 import { AppFontLoader } from './utils/AppFontLoader';
-
-export default class App extends React.Component {
-  
   render() {
     return (
       <AppFontLoader>
