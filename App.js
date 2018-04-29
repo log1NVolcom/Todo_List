@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   textareaContainer: {
@@ -45,7 +44,7 @@ export default class App extends React.Component {
           style={styles.textarea}
           defaultValue={this.state.text}
           maxLength={120}
-          placeholder="好玩有趣的，大家同乐，伤感忧闷的，大家同哭。。。"
+          placeholder="Enter Text"
           placeholderTextColor="#c7c7c7"
           underlineColorAndroid="transparent"
           onChangeText={text => this.setState({ text })}
