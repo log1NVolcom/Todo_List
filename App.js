@@ -1,9 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Container, Header, Left, Body, Title, Right, Content, Textarea, Form } from 'native-base';
-import { AppFontLoader } from './utils/AppFontLoader';
 
-export default class App extends React.Component {
+import { AppFontLoader } from './utils/AppFontLoader';
   render() {
     return (
       <AppFontLoader>
