@@ -6,11 +6,9 @@ import Textarea from 'react-native-textarea';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 30,
-    alignItems: 'center',
   },
   textareaContainer: {
-    height: 180,
+    height: '70%',
     padding: 5,
     backgroundColor: '#F5FCFF',
   },
@@ -50,8 +48,11 @@ export default class App extends React.Component {
           onChangeText={text => this.setState({ text })}
         />
         <Button
-          title="BUTTON"
-          style={{ marginTop: 20 }}
+          title="Clear Text"
+          buttonStyle={{
+            borderRadius: 10,
+            marginTop: 20,
+          }}
           onPress={() => this.setState({ text: '' })}
         />
       </View>
