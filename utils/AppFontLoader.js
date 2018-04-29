@@ -3,27 +3,20 @@ import { AppLoading, Font } from 'expo';
 import FontAwesome from '../node_modules/@expo/vector-icons/fonts/FontAwesome.ttf';
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
 
-const roboto = require('native-base/Fonts/Roboto.ttf');
-const robotoMedium = require('native-base/Fonts/Roboto.ttf');
-const ionicons = require('native-base/Fonts/Roboto.ttf');
-
-export default class AppFontLoader extends React.Component {
+class AppFontLoader extends React.Component {
   state = {
     fontLoaded: false,
   };
-
   async componentWillMount() {
     try {
       await Font.loadAsync({
         FontAwesome,
         MaterialIcons,
-        Roboto: roboto,
-        Roboto_medium: robotoMedium,
-        Ionicons: ionicons,
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+        Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf'),
       });
-      this.setState({
-        fontLoaded: true,
-      });
+      this.setState({ fontLoaded: true });
     } catch (error) {
       console.log('error loading icon fonts', error);
     }
@@ -35,3 +28,4 @@ export default class AppFontLoader extends React.Component {
     return this.props.children;
   }
 }
+export { AppFontLoader };
