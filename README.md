@@ -19,7 +19,7 @@ npm install
 Finally
 
 ```
-npm start
+exp start
 ```
 
 Now its ready to use
