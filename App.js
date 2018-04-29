@@ -4,12 +4,7 @@ import { FormLabel, Button, Header } from 'react-native-elements';
 import Textarea from 'react-native-textarea';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: {},
   textareaContainer: {
     height: 180,
     padding: 5,
