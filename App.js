@@ -1,61 +1,45 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { FormLabel, Button, Header } from 'react-native-elements';
-import Textarea from 'react-native-textarea';
+import React, { Component } from 'react';
+import { View, Image, StyleSheet } from 'react-native';
+import { DrawerNavigator } from 'react-navigation';
+import HomeScreen from './Screens/HomeScreen';
+import ArquiveScreen from './Screens/ArquiveScreen';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  textareaContainer: {
-    height: '70%',
-    padding: 5,
-    backgroundColor: '#F5FCFF',
-  },
-  textarea: {
-    textAlignVertical: 'top', // hack android
-    height: 170,
-    fontSize: 14,
-    color: '#333',
+  drawerImage: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
   },
 });
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: '',
-    };
-  }
-
+class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Header
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-        />
-        <FormLabel>Your post</FormLabel>
-        <Textarea
-          containerStyle={styles.textareaContainer}
-          style={styles.textarea}
-          defaultValue={this.state.text}
-          maxLength={120}
-          placeholder="Enter Text"
-          placeholderTextColor="#c7c7c7"
-          underlineColorAndroid="transparent"
-          onChangeText={text => this.setState({ text })}
-        />
-        <Button
-          title="Clear Text"
-          buttonStyle={{
-            borderRadius: 10,
-            marginTop: 20,
-          }}
-          onPress={() => this.setState({ text: '' })}
-        />
-      </View>
-    );
+    return <MyApp />;
   }
 }
+
+const CustomDrawerContentComponent = props => (
+  <View>
+    <Image style={styles.drawerImage} source={require('./assets/DrawerIcons/todolistlogo.png')} />
+  </View>
+);
+
+const MyApp = DrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Arquive: {
+      screen: ArquiveScreen,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    contentComponent: 'CustomDrawerContentComponent',
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
+  },
+);
+
+export default App;
