@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
+import { View, StyleSheet, Text, Button, TextInput, AsyncStorage } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   headerText: {
     color: '#e8f1f2',
@@ -25,11 +25,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     alignContent: 'center',
-    justifyContent: 'center',
   },
   textInput: {
     backgroundColor: '#e8f1f2',
-    height: 150,
+    height: '75%',
     marginTop: 0,
     paddingTop: 0,
     textAlignVertical: 'top', // hack android
@@ -54,6 +53,15 @@ class HomeScreen extends React.Component {
     };
   }
 
+  saveData = async () => {
+    try {
+      await AsyncStorage.setItem('@arquive:Post', this.state.text);
+      alert('Data Saved');
+    } catch (error) {
+      alert('Save error');
+    }
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -77,7 +85,7 @@ class HomeScreen extends React.Component {
               title="Create post"
               color="#3d4f60" // buttons cant use backgroundColor
               style={styles.button}
-              onPress={() => this.setState({ text: '' })}
+              onPress={this.saveData}
             />
           </View>
         </View>
