@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#1b98e0',
   },
   header: {
-    height: 80,
+    height: 100,
     paddingTop: 24,
     backgroundColor: '#13293d',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignContent: 'center',
+    alignContent: 'stretch',
     marginBottom: 10,
   },
   headerText: {
@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 10,
     marginTop: 20,
+  },
+  logo: {
+    paddingTop: 24,
+    height: 85,
+    width: '100%',
   },
 });
 
@@ -85,7 +90,10 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Todo List</Text>
+          <Image
+            style={styles.logo}
+            source={require('./../assets/DrawerIcons/todo_list_logo.png')}
+          />
         </View>
         <View style={styles.main}>
           <Text style={styles.textInputLabel}>Create your post here:</Text>

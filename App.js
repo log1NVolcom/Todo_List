@@ -22,7 +22,7 @@ class App extends Component {
 
 const CustomDrawerContentComponent = props => (
   <View>
-    <Image style={styles.drawerImage} source={require('./assets/DrawerIcons/todolistlogo.png')} />
+    <Image style={styles.drawerImage} source={require('./assets/DrawerIcons/todo_list_logo.png')} />
     <DrawerItems {...props} />
   </View>
 );
