@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { View, StyleSheet, Text, Button, TextInput, AsyncStorage } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -49,20 +48,40 @@ class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
+      postArray: [],
+      postText: '',
     };
   }
 
+  updateData = async () => {
+    try {
+      const aux = await AsyncStorage.getItem('@arquive:Post');
+      if (aux) {
+        const auxparse = JSON.parse(aux);
+        this.setState({ postArray: auxparse });
+        return JSON.parse(aux);
+      }
+    } catch (error) {
+      alert('Display Data Error');
+    }
+    return null;
+  };
+
   saveData = async () => {
     try {
-      await AsyncStorage.setItem('@arquive:Post', this.state.text);
-      alert('Data Saved');
+      if (this.state.postText) {
+        this.state.postArray.push({ post: this.state.postText });
+        this.setState({ postArray: this.state.postArray });
+        this.setState({ postText: '' });
+        await AsyncStorage.setItem('@arquive:Post', JSON.stringify(this.state.postArray));
+      }
     } catch (error) {
       alert('Save error');
     }
   };
 
   render() {
+    this.updateData();
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -76,8 +95,8 @@ class HomeScreen extends React.Component {
             multiline
             maxLength={120}
             underlineColorAndroid="transparent"
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
+            onChangeText={postText => this.setState({ postText })}
+            value={this.state.postText}
           />
 
           <View style={styles.footer}>
