@@ -38,6 +38,9 @@ class HomeScreen extends React.Component {
       postArray: [],
       postText: 'Insert your text here',
     };
+
+    this.updateData = this.updateData.bind(this);
+    this.saveData = this.saveData.bind(this);
   }
 
   updateData = async () => {
