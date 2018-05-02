@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
     super(props);
     this.state = {
       postArray: [],
-      postText: '',
+      postText: 'Insert your text here',
     };
   }
 

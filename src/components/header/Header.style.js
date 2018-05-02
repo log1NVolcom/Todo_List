@@ -2,18 +2,18 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   header: {
-    height: 100,
+    height: 80,
     paddingTop: 24,
     backgroundColor: '#13293d',
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignContent: 'stretch',
-    marginBottom: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerText: {
     color: '#e8f1f2',
-    fontSize: 20,
+    fontSize: 24,
+    textAlign: 'center',
+    flex: 1,
   },
   logo: {
     paddingTop: 24,

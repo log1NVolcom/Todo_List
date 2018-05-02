@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import styles from './Header.style';
 
 const imageName = require('../../../assets/DrawerIcons/todo_list_logo.png');
 
 const Header = () => (
   <View style={styles.header}>
-    <Image style={styles.logo} source={imageName} />
+    <Text style={styles.headerText}>Todo List</Text>
   </View>
 );
 
