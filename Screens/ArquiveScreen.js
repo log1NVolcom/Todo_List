@@ -54,6 +54,12 @@ class ArquiveScreen extends React.Component {
   }
   displayData = async () => {
     try {
+      AsyncStorage.getAllKeys((err, keys) => {
+        AsyncStorage.multiGet(keys, (err, texts) => {
+          console.log(texts);
+        });
+      });
+
       const value = await AsyncStorage.getItem('@arquive:Post');
       this.setState({ text: value });
     } catch (error) {
