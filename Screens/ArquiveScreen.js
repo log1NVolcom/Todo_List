@@ -1,25 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Text, Button, ScrollView, AsyncStorage } from 'react-native';
 import Post from './Post';
+import Header from '../src/components/header/Header';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1b98e0',
-  },
-  header: {
-    height: 80,
-    paddingTop: 24,
-    backgroundColor: '#13293d',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignContent: 'center',
-    marginBottom: 20,
-  },
-  headerText: {
-    color: '#e8f1f2',
-    fontSize: 20,
   },
   main: {
     marginLeft: 10,
@@ -51,7 +38,6 @@ class ArquiveScreen extends React.Component {
     super(props);
     this.state = {
       postArray: [],
-      text: '',
     };
   }
 
@@ -65,6 +51,7 @@ class ArquiveScreen extends React.Component {
       return false;
     }
   };
+
   updateData = async () => {
     try {
       const aux = await AsyncStorage.getItem('@arquive:Post');
@@ -76,6 +63,7 @@ class ArquiveScreen extends React.Component {
     } catch (error) {
       return false;
     }
+    return false;
   };
 
   deletePost = async (key) => {
@@ -89,6 +77,7 @@ class ArquiveScreen extends React.Component {
       return false;
     }
   };
+
   deleteAllPosts = async () => {
     try {
       const aux = [];
@@ -99,16 +88,16 @@ class ArquiveScreen extends React.Component {
       return false;
     }
   };
+
   render() {
     this.displayData();
     const posts = this.state.postArray.map((val, key) => (
       <Post key={key} keyval={key} val={val} deleteMethod={() => this.deletePost(key)} />
     ));
+
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Todo List</Text>
-        </View>
+        <Header />
 
         <ScrollView style={styles.scrollContainer}>{posts}</ScrollView>
         <View style={styles.footer}>

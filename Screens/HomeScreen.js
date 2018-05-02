@@ -1,24 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text, Button, TextInput, AsyncStorage } from 'react-native';
+import Header from '../src/components/header/Header';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1b98e0',
-  },
-  header: {
-    height: 100,
-    paddingTop: 24,
-    backgroundColor: '#13293d',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignContent: 'stretch',
-    marginBottom: 10,
-  },
-  headerText: {
-    color: '#e8f1f2',
-    fontSize: 20,
   },
   main: {
     marginLeft: 10,
@@ -41,11 +28,6 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 10,
     marginTop: 20,
-  },
-  logo: {
-    paddingTop: 24,
-    height: 85,
-    width: '100%',
   },
 });
 
@@ -89,12 +71,8 @@ class HomeScreen extends React.Component {
     this.updateData();
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Image
-            style={styles.logo}
-            source={require('./../assets/DrawerIcons/todo_list_logo.png')}
-          />
-        </View>
+        <Header />
+
         <View style={styles.main}>
           <Text style={styles.textInputLabel}>Create your post here:</Text>
 

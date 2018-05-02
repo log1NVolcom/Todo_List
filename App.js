@@ -1,31 +1,10 @@
-import React, { Component } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import React from 'react';
+import { DrawerNavigator } from 'react-navigation';
 import HomeScreen from './Screens/HomeScreen';
 import ArquiveScreen from './Screens/ArquiveScreen';
+import Drawer from './src/components/drawer/Drawer';
 
-const styles = StyleSheet.create({
-  drawerImage: {
-    marginTop: 25,
-    height: 60,
-    width: 60,
-    display: 'flex',
-    alignSelf: 'center',
-  },
-});
-
-class App extends Component {
-  render() {
-    return <MyApp />;
-  }
-}
-
-const CustomDrawerContentComponent = props => (
-  <View>
-    <Image style={styles.drawerImage} source={require('./assets/DrawerIcons/todo_list_logo.png')} />
-    <DrawerItems {...props} />
-  </View>
-);
+const App = () => <MyApp />;
 
 const MyApp = DrawerNavigator(
   {
@@ -38,7 +17,7 @@ const MyApp = DrawerNavigator(
   },
   {
     initialRouteName: 'Home',
-    contentComponent: CustomDrawerContentComponent,
+    contentComponent: Drawer,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
     drawerToggleRoute: 'DrawerToggle',
