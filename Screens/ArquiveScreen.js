@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button, ScrollView, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Button, ScrollView, AsyncStorage } from 'react-native';
 import Post from './Post';
 import Header from '../src/components/header/Header';
 

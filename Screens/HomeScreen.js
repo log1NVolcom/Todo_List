@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button, TextInput, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Text, AsyncStorage } from 'react-native';
 import Header from '../src/components/header/Header';
+import TDButton from '../src/components/button/TDButton';
+import TextArea from '../src/components/input/TextArea';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,22 +14,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignContent: 'center',
   },
-  textInput: {
-    backgroundColor: '#e8f1f2',
-    height: '75%',
-    marginTop: 0,
-    paddingTop: 0,
-    textAlignVertical: 'top', // hack android
-    marginBottom: 20,
-    fontSize: 18,
-  },
   textInputLabel: {
     color: '#e8f1f2',
     fontSize: 20,
-  },
-  button: {
-    borderRadius: 10,
-    marginTop: 20,
   },
 });
 
@@ -48,7 +37,9 @@ class HomeScreen extends React.Component {
       const aux = await AsyncStorage.getItem('@arquive:Post');
       if (aux) {
         const auxparse = JSON.parse(aux);
-        this.setState({ postArray: auxparse });
+        this.setState({
+          postArray: auxparse,
+        });
         return JSON.parse(aux);
       }
     } catch (error) {
@@ -60,9 +51,15 @@ class HomeScreen extends React.Component {
   saveData = async () => {
     try {
       if (this.state.postText) {
-        this.state.postArray.push({ post: this.state.postText });
-        this.setState({ postArray: this.state.postArray });
-        this.setState({ postText: '' });
+        this.state.postArray.push({
+          post: this.state.postText,
+        });
+        this.setState({
+          postArray: this.state.postArray,
+        });
+        this.setState({
+          postText: '',
+        });
         await AsyncStorage.setItem('@arquive:Post', JSON.stringify(this.state.postArray));
       }
     } catch (error) {
@@ -75,27 +72,15 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Header />
-
         <View style={styles.main}>
-          <Text style={styles.textInputLabel}>Create your post here:</Text>
+          <Text style={styles.textInputLabel}> Create your post here: </Text>
 
-          <TextInput
-            style={styles.textInput}
-            multiline
-            maxLength={120}
-            underlineColorAndroid="transparent"
+          <TextArea
             onChangeText={postText => this.setState({ postText })}
             value={this.state.postText}
           />
 
-          <View style={styles.footer}>
-            <Button
-              title="Create post"
-              color="#3d4f60" // buttons cant use backgroundColor
-              style={styles.button}
-              onPress={this.saveData}
-            />
-          </View>
+          <TDButton onPress={this.saveData} />
         </View>
       </View>
     );
